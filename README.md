@@ -4,6 +4,7 @@
 
 - 기초 탄탄 Java 공부, 복습, 정리 -> this repo.
 - problem solving with java -> ProblemSolving repo.
+    - 자바 라이브러리 위주로 풀이
 - 개인 or 팀, Java 프로젝트 -> other repo.
 
 <br>
