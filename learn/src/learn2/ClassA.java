@@ -8,4 +8,3 @@ public class ClassA {
         System.out.println("this is ClassA instance Function");
     }
 }
-
