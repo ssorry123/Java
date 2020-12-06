@@ -90,3 +90,6 @@
     - java.lang.System
 - Hello15
     - 동적 객체 생성
+- Hello16
+    - String, StringBuilder
+    
