@@ -92,7 +92,7 @@
     - 동적 객체 생성
 - Hello16
     - String, StringBuilder
-- Hello16
+- Hello17
     - 정규표현식과 Pattern 클래스
     - Arrays 클래스
         - Comparable
