@@ -1,4 +1,4 @@
-package learn;
+package learn1;
 
 /*
  * 람다식 : (함수적 프로그래밍)
