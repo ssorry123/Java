@@ -4,9 +4,15 @@
         - FunctionalInterface
     - Hello30
         - FunctionalInterface API
-        - java.util.function
+        - java.util.function.*
             - Consumer
             - Supplier
             - Function
             - Operator
             - Predicate
+    - Hello31
+        - java.util.function.* 's default, static method
+            - andThen, compose
+            - and, or, negate
+            - isEqual
+            - minBy, maxBy
