@@ -17,7 +17,13 @@ package learn1;
 @FunctionalInterface
 interface MyInterfaceVoid1 {
     // 매개변수가 없는 메소드
-    public void method();
+    public void method(); // 추상 메소드라 함은 public이고 구현되지 않은 메소드를 말한다.
+
+    // default와 static 메소드는 FunctionalInterface라도 선언할 수 있다.
+    default void method1() {
+    }
+    static void method2() {
+    }
 }
 
 @FunctionalInterface
