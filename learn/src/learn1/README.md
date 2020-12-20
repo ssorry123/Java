@@ -16,3 +16,9 @@
             - and, or, negate
             - isEqual
             - minBy, maxBy
+    - Hello32
+        - 메소드 참조
+            - 정적, 인스턴스 메소드 참조
+            - 매개변수의 메소드 참조
+            - 생성자 참조
+
