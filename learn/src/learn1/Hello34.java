@@ -47,7 +47,7 @@ public class Hello34 {
         // 다른점 : Thread Safe
 
         /*
-         * Properties HashTable의 하위클래스, 키와 타입을 String타입으로 제한 주로 .properties 파일을 읽을 때 주로
+         * 3. Properties HashTable의 하위클래스, 키와 타입을 String타입으로 제한 주로 .properties 파일을 읽을 때 주로
          * 사용
          * 
          * 프로퍼티 파일 : 키와 값이 = 기호로 연결되어 있는 텍스트 파일 ISO 8859-1 문자셋으로 저장됨 한글과 같이 표현할 수 없는 경우
@@ -63,7 +63,7 @@ public class Hello34 {
         // 파일경로를 파일리더로 읽어서 프로퍼티에 로드
         properties.load(new FileReader(path));
 
-        // 프로퍼티도 매빙므로 get으로 가져올 수 있지만, get은 Object타입을 리턴함
+        // 프로퍼티도 맵이므로 get으로 가져올 수 있지만, get은 Object타입을 리턴함
         // String으로 강제 타입 변환해야함
         String driver = (String) properties.get("driver");
         String url = properties.getProperty("url");
