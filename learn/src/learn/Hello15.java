@@ -23,6 +23,7 @@ class ReceiveAction implements Action {
 
 public class Hello15 {
 
+    @SuppressWarnings({ "deprecation", "rawtypes" })
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         try {

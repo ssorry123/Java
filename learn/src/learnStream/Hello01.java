@@ -63,6 +63,7 @@ public class Hello01 {
         Stream<String> stream = Files.lines(path, Charset.defaultCharset());
         stream.forEach(System.out::println);
         System.out.println();
+        stream.close();
 
         // BufferedReader의 lines() 메소드 이용
         File file = path.toFile();
@@ -72,12 +73,16 @@ public class Hello01 {
         stream = bufferReader.lines();
         stream.forEach(System.out::println);
         System.out.println();
+        stream.close();
+        bufferReader.close();
+        fileReader.close();
 
         // 5. 디렉토리로부터 스트림 얻기
         Path dirPath = Paths.get("C:/");
         // Files.list() 메소드 이용
         Stream<Path> streamPath = Files.list(dirPath);
         streamPath.forEach(p -> System.out.println(p.getFileName()));
+        streamPath.close();
     }
 
 }

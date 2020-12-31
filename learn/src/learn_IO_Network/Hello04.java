@@ -49,6 +49,7 @@ import java.io.Writer;
 public class Hello04 {
 
     public static void main(String[] args) throws IOException {
+        String testFile = "D:/Java/learn/src/learn_IO_Network/Temp";
         // TODO Auto-generated method stub
 
         /* 문자 변환 보조 스트림, 성능 향상 보조 스트림 */
@@ -72,7 +73,7 @@ public class Hello04 {
         System.out.println("next");
 
         // 프로그램 -> 버퍼 -> 문자 출력 스트림 -> 바이트 출력 스트림 -> 파일
-        File file = new File("D:/Temp/file3.txt");
+        File file = new File(testFile + "/file3.txt");
         file.createNewFile();
 
         FileOutputStream fos = new FileOutputStream(file); // 최종 바이트 스트림
@@ -88,7 +89,7 @@ public class Hello04 {
 
         /* 기본 타입 입출력 보조 스트림 */
         // 프로그램 -> 데이터 타입 -> 바이트 변환 -> 파일
-        File myData = new File("D:/Temp/myData.dat");
+        File myData = new File(testFile + "/myData.dat");
         myData.createNewFile();
         FileOutputStream fos2 = new FileOutputStream(myData); // 최종 ( 바이트 출력 스트림 )
         BufferedOutputStream bo2 = new BufferedOutputStream(fos2); // 버퍼
@@ -112,12 +113,14 @@ public class Hello04 {
             int age = dis2.readInt();
             System.out.println(name + " " + age);
         }
+        dis2.close();
+        
 
         /* 프린트 보조 스트림 */
         // PrintStream, PrintWriter
         // System.out은 바로 PrintStream의 한 종류이다
         // printf, print, println 메소드를 사용할 수 있다.
-        File file4 = new File("D:/Temp/file4.txt");
+        File file4 = new File(testFile + "/file4.txt");
         file4.createNewFile();
 
         FileOutputStream fos4 = new FileOutputStream(file4);

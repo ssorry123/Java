@@ -16,11 +16,12 @@ import java.text.SimpleDateFormat;
 public class Hello03 {
 
     public static void main(String[] args) throws IOException {
+        String testFile = "D:/Java/learn/src/learn_IO_Network/Temp";
         // 1. 파일 클래스
         // 파일 생성 및 디렉토리 정보 출력
-        File dir = new File("D:/Temp/Dir");
-        File file1 = new File("D:/Temp/file1.txt");
-        File file2 = new File("D:/Temp/file2.txt");
+        File dir = new File(testFile + "/Dir");
+        File file1 = new File(testFile + "/file1.txt");
+        File file2 = new File(testFile + "/file2.txt");
 
         if (!dir.exists())
             dir.mkdirs(); // 경로상의 모든 존재하지 않는 디렉토리를 만든다.
@@ -29,7 +30,7 @@ public class Hello03 {
         if (!file2.exists())
             file2.createNewFile();
 
-        File tmp = new File("D:/Temp");
+        File tmp = new File(testFile);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd\taHH:mm");
         File[] contents = tmp.listFiles(); // 디렉토리의 모든 파일 및 디렉토리를 File 배열로 리턴
         System.out.println("--------------------------------------------------------------");
@@ -50,7 +51,7 @@ public class Hello03 {
         // output 두가지 방법 (String 전달, File 객체 전달)
         // 두번째 인자 -> 이어쓰기 여부
         FileOutputStream fos1 = new FileOutputStream(file1);
-        FileOutputStream fos2 = new FileOutputStream("D:/Temp/file2.txt", true);
+        FileOutputStream fos2 = new FileOutputStream(testFile + "/file2.txt", true);
 
         fos1.write("가나다abc\n".getBytes());
         fos2.write("abc가나다\n".getBytes());
@@ -60,7 +61,7 @@ public class Hello03 {
         fos2.close();
 
         // 문자를 읽어야하므로 Reader를 사용한다.
-        FileReader fis1 = new FileReader("D:/Temp/file1.txt");
+        FileReader fis1 = new FileReader(testFile + "/file1.txt");
         FileReader fis2 = new FileReader(file2);
 
         char[] readChar = new char[100];

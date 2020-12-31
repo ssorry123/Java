@@ -46,6 +46,7 @@ import java.io.Writer;
 
 public class Hello00 {
 
+    @SuppressWarnings("resource")
     public static void main(String[] args) throws IOException {
         String testFile = "D:/Java/learn/src/learn_IO_Network";
 

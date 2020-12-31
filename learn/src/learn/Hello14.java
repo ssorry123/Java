@@ -40,6 +40,7 @@ class Obo extends Robot {
 }
 
 public class Hello14 {
+    @SuppressWarnings("rawtypes")
     private static void printParameters(Class[] parameters) {
         for (int i = 0; i < parameters.length; ++i) {
             System.out.print(parameters[i].getName());
@@ -49,6 +50,7 @@ public class Hello14 {
         }
     }
 
+    @SuppressWarnings({ "rawtypes", "unused" })
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         // Class 클래스, getClass(), Class.getName("");

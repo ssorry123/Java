@@ -29,6 +29,7 @@ class Course<T> {
     private String name;
     private T[] student;
 
+    @SuppressWarnings("unchecked")
     public Course(String name, int capacity) {
         this.name = name;
         // 타입 파라미터로 배열을 생성하려면, Object로 생성후 타입 변환을 해야 한다
@@ -102,6 +103,7 @@ class _Child<P, I, T> extends _Parent<P> implements _Storage<I> {
     private I[] i;
     private T t;
 
+    @SuppressWarnings("unchecked")
     @Override
     public void add(int index, I item) {
         if (i == null) {

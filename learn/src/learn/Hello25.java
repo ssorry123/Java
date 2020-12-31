@@ -20,6 +20,7 @@ class Task1 implements Runnable {
         this.threadPoolExecutor = tPE;
     }
 
+    @SuppressWarnings("unused")
     @Override
     public void run() {
         // TODO Auto-generated method stub
@@ -81,6 +82,7 @@ public class Hello25 {
                 System.out.println("작업 처리 1 결과 : " + sum);
             }
         };
+        @SuppressWarnings("rawtypes")
         Future future = ES.submit(runnable);
 
         Thread tmp = new Thread(new Runnable() {

@@ -39,3 +39,12 @@
             - PrintWriter
 
 <br>
+
+- Hello05
+    - 객체 보조 스트림
+        - ObjectOutputStream
+        - ObjectInputStream
+        - 직렬화 (Serialization)
+        - 역직렬화 (Deserialization)
+        - Serializable 인터페이스
+        - 부모 객체 직렬화, 역직렬화

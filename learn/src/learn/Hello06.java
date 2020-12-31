@@ -105,6 +105,7 @@ class DoubleInterface implements View, View2 {
 
 public class Hello06 {
 
+    @SuppressWarnings("static-access")
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         System.out.println(View.PI); // 상수

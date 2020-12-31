@@ -19,6 +19,7 @@ public class Hello01 extends Application {
 
     static boolean programLayout;
 
+    @SuppressWarnings("exports")
     @Override
     public void start(Stage primaryStage) throws Exception {
         if (programLayout)
@@ -27,6 +28,7 @@ public class Hello01 extends Application {
             start_FXML_Layout(primaryStage);
     }
 
+    @SuppressWarnings({ "exports", "rawtypes", "unchecked" })
     public void start_Program_Layout(Stage primaryStage) throws Exception {
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(10)); // 안쪽 여백 설정
@@ -51,6 +53,7 @@ public class Hello01 extends Application {
     // 안드로이드 앱 개발 방법과 유사
     // 태그에 익숙한 디자이너와 협업 가능
     // FXML 코드 작성을 위한 JavaFX Scene Builder 제공
+    @SuppressWarnings("exports")
     public void start_FXML_Layout(Stage primaryStage) throws Exception {
         Parent root = (Parent) FXMLLoader.load(getClass().getResource("root.fxml"));
         Scene scene = new Scene(root);

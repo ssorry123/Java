@@ -85,6 +85,7 @@ class MultiBox<A, B, C, D> {
 
 public class Hello27 {
 
+    @SuppressWarnings({ "rawtypes", "unchecked", "unused" })
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         Box box1 = new Box();

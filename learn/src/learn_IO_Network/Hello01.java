@@ -23,6 +23,7 @@ public class Hello01 {
         // System.in 필드
         InputStream is = System.in;
         // read, 캐릭터 하나 받기
+        System.out.print("문자 하나 입력 : ");
         char inputChar = (char) is.read(); // return Ascii code
         System.out.println(inputChar);
         is.read(); // \r, 캐리지 리턴
@@ -70,6 +71,8 @@ public class Hello01 {
         System.out.print("실수 입력 ");
         double d = scanner.nextDouble();
         System.out.println(d);
+        
+        scanner.close();
     }
 
 }
