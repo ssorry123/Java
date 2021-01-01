@@ -48,3 +48,18 @@
         - 역직렬화 (Deserialization)
         - Serializable 인터페이스
         - 부모 객체 직렬화, 역직렬화
+
+<br>
+
+- Hello06_
+    - TCP
+    - java.net.InetAddress
+    - java.net.InetSocketAddress
+    - java.net.ServerSocket
+    - java.net.Socket
+- Hello06_Server
+    - TCP
+    - 간단한 서버, 클라이언트보다 먼저 실행해야 함
+- Hello06_Client
+    - TCP
+    - 간단한 클라이언트
