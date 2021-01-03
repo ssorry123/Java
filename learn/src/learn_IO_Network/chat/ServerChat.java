@@ -26,111 +26,12 @@ public class ServerChat extends Application {
     ExecutorService executorService; // 서버 과부하 방지를 위한 스레드풀
     ServerSocket serverSocket; // 클라이언트 연결 수락 담당
     // 연결된 스레드 저장 List, Thread safe한 vector
-    List<Client> connections = new Vector<Client>();
-
-    // 연결된 클라이언트를 표현
-    // 클라이언트 별로 고유한 데이터를 저장할 필요가 있음
-    class Client {
-        Socket socket;
-
-        Client(Socket socket) {
-            this.socket = socket;
-            receive();
-        }
-
-        // 데이터 받기
-        void receive() {
-            // 받기 작업 스레드 생성
-            Runnable runnable;
-            runnable = new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        while (true) {
-                            byte[] byteArr = new byte[100];
-                            InputStream is = socket.getInputStream();
-
-                            // 클라이언트가 비정상 종료를 하면 IOException이 발생한다.
-                            int readByteCount = is.read(byteArr);
-
-                            // 클라이언트가 정상적으로 Socket의 close를 호출할 경우, -1 리턴
-                            if (readByteCount == -1) {
-                                throw new IOException();
-                            }
-
-                            //
-                            final String msg = "[받은 요청 처리:" + socket.getRemoteSocketAddress() + ": "
-                                    + Thread.currentThread().getName() + "]";
-
-                            Platform.runLater(() -> {
-                                displayText(msg);
-                            });
-
-                            // 받은 데이터 문자열로 변환
-                            String data = new String(byteArr, 0, readByteCount, "UTF-8");
-                            // 모든 클라이언트에게 데이터를 보냄
-                            for (Client client : connections) {
-                                client.send(data);
-                            }
-
-                        }
-                    } catch (Exception e) {
-                        // 내부 객체인 클라이언트를 제거한다.
-                        final String msg = "[클라이언트 통신 안됨: " + socket.getRemoteSocketAddress() + ": "
-                                + Thread.currentThread().getName() + "]";
-                        Platform.runLater(() -> {
-                            displayText(msg);
-                        });
-                        connections.remove(Client.this);
-                        try {
-                            socket.close();
-                        } catch (IOException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
-                        }
-                    }
-                }
-            };
-
-            executorService.submit(runnable);
-        }
-
-        // 데이터 보내기
-        void send(String data) {
-            // 보내기 작업 스레드 생성
-            Runnable runnable;
-            runnable = new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        byte[] byteArr = data.getBytes("UTF-8");
-                        OutputStream os = socket.getOutputStream();
-                        os.write(byteArr);
-                        os.flush();
-                    } catch (Exception e) {
-                        // 내부 객체인 클라이언트를 제거한다.
-                        connections.remove(Client.this);
-                        final String msg = "[클라이언트 통신 안됨: " + socket.getRemoteSocketAddress() + ": "
-                                + Thread.currentThread().getName() + "]";
-
-                        Platform.runLater(() -> displayText(msg));
-                        try {
-                            socket.close();
-                        } catch (IOException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
-                        }
-                    }
-                }
-            };
-            executorService.submit(runnable);
-        }
-    }
+    List<ServerChatClient> connections = new Vector<>();
 
     void startServer() {
         // cpu코어 수만큼 스레드 생성 허용
         executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-
+        System.out.println(executorService);
         // ServerSocket 생서 및 포트 바인딩
         try {
             serverSocket = new ServerSocket();
@@ -163,17 +64,21 @@ public class ServerChat extends Application {
                         msg += socket.getRemoteSocketAddress();
                         msg += ": ";
                         msg += Thread.currentThread().getName();
-                        msg += "]";
+                        msg += "]\n";
 
                         // 클라이언트 객체 저장
-                        Client client = new Client(socket);
+                        ServerChatClient client = new ServerChatClient(socket, ServerChat.this);
                         connections.add(client);
+                        
+                        final String str = msg + "연결개수:" + connections.size() + "]";
 
                         Platform.runLater(() -> {
-                            displayText("연결개수: " + connections.size() + "]");
+                            displayText(str);
                         });
 
                     } catch (Exception e) {
+                        System.out.println(e);
+                        e.getStackTrace();
                         if (!serverSocket.isClosed())
                             stopServer();
                         break;
@@ -190,9 +95,9 @@ public class ServerChat extends Application {
         // 모든 Socket 닫기, ServerSocket 닫기, ExecutorService 종료
         try {
             // 모든 소켓 닫기
-            Iterator<Client> iter = connections.iterator();
+            Iterator<ServerChatClient> iter = connections.iterator();
             while (iter.hasNext()) {
-                Client c = iter.next();
+                ServerChatClient c = iter.next();
                 c.socket.close();
                 iter.remove();
             }

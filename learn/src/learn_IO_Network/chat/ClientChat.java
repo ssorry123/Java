@@ -42,17 +42,20 @@ public class ClientChat extends Application {
                         stopClient();
                     return;
                 }
-                // 서버에서 보낸 데이터 받기
+                // 서버에서 보낸 데이터 받기 상태
                 receive();
             }
         };
         thread.start();
     }
 
+    /**
+     * socket 닫기
+     */
     void stopClient() {
         try {
             Platform.runLater(() -> {
-                displayText("[연결끊음]");
+                displayText("[서버와 연결끊음]");
                 btnConn.setText("start");
                 btnSend.setDisable(true);
             });
@@ -64,7 +67,9 @@ public class ClientChat extends Application {
         }
     }
 
-    // 서버에서 보낸 데ㅣ터를 받는 역할
+    /**
+     * 서버에서 보내는 뎅이터를 받는다.
+     */
     void receive() {
         while (true) {
             try {
@@ -82,10 +87,7 @@ public class ClientChat extends Application {
                 });
 
             } catch (Exception e) {
-                Platform.runLater(() -> {
-                    displayText("[서버와 통신 안됨]");
-                });
-                stopClient();
+                exception(e);
                 break;
             }
 
@@ -102,15 +104,19 @@ public class ClientChat extends Application {
                     OutputStream os = socket.getOutputStream();
                     os.write(byteArr);
                     os.flush();
-                    Platform.runLater(() -> displayText("보내기 완료"));
+                    // Platform.runLater(() -> displayText("나: "));
                 } catch (Exception e) {
-                    Platform.runLater(() -> displayText("서버와 통신 안됨"));
-                    stopClient();
+                    exception(e);
                 }
             }
         };
 
         thread.start();
+    }
+
+    void exception(Exception e) {
+        Platform.runLater(() -> displayText("서버와 통신 안됨"));
+        stopClient();
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -138,9 +144,10 @@ public class ClientChat extends Application {
         btnConn = new Button("start");
         btnConn.setPrefSize(60, 30);
         btnConn.setOnAction(e -> {
-            if (btnConn.getText().equals("start"))
+            String tmp = btnConn.getText();
+            if (tmp.equals("start"))
                 startClient();
-            else if (btnConn.getText().equals("stop"))
+            else if (tmp.equals("stop"))
                 stopClient();
         });
 

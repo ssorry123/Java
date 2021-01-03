@@ -1,6 +1,12 @@
-단체 채팅방 구현  
-서버-클라이언트  
-코드 약간의 개선 예정
+- ServerChat
+  - 서버 클래스
+- ServerChatClient
+  - 서버에서 클라이언트를 관리하기 위한 클래스
+
+<br>
+
+- ClientChat
+  - 클라이언트 클래스
   
   <br>
   
