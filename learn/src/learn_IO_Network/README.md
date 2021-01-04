@@ -63,3 +63,10 @@
 - Hello06_Client
     - TCP
     - 간단한 클라이언트
+
+<br>
+
+- Hello07
+    - UDP
+    - java.net.DatagramSocket
+    - java.net.DatagramPacket
