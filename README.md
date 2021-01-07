@@ -7,15 +7,6 @@
     - 자바 라이브러리 위주로 풀이
 - 개인 or 팀, Java 프로젝트 -> other repo.
 
-<br>
-
----
-
-### this repo.
-
-- 문법 C, C++과 비슷해서 익숙함
-- 객체 개념 Python과 비슷해서 익숙함
-- => java만의 특성, 기능 위주로
 
 <br>
 
@@ -23,6 +14,15 @@
 
 #### Refer
 https://docs.oracle.com/en/java/javase/
+
+<br>
+
+---
+
+- 이클립스 팁
+    - 다양한 편리한 기능
+    - 원하는 위치 -> 마우스 오른쪽 클릭 -> [Source]
+
 
 <br>
 
