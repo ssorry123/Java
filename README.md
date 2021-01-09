@@ -8,12 +8,6 @@
 - 개인 or 팀, Java 프로젝트 -> other repo.
 
 
-<br>
-
----
-
-#### Refer
-https://docs.oracle.com/en/java/javase/
 
 <br>
 
@@ -49,3 +43,11 @@ https://docs.oracle.com/en/java/javase/
 10진수 실수(소수점 있는) : 0.33, -3.0
 10진수 지수, 가수 (E or e) : 3E7, 3.14e-5
 ```
+
+<br>
+
+---
+
+#### Refer
+https://docs.oracle.com/en/java/javase/  
+이것이 자바다.(신용권)
