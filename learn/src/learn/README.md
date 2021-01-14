@@ -132,11 +132,14 @@
 
 - ThreadPool
     - Hello25
-        - ThreadPoolExecutor
-        - Runnable, Callable
-        - excute, submit
-        - Futrue, get
+        - ThreadPoolExecutor (최대 스레드 수 조절)
+        - Runnable, Callable (리턴값 유무)
+        - excute, submit (작업 제출)
+        - Future, get (작업 완료 통보)
     - Hello26
+        - 작업 처리 결과 외부 객체에 저장
+        - 작업 완료 순으로 통보
+        - 콜백 방식의 작업완료 통보
         - submit(Runnable, T)
         - CompletionService
         - CompletionHandler (Callback)
